@@ -1,0 +1,22 @@
+# Executáveis e binários
+*.exe
+*.out
+*.bin
+
+# Arquivos de objeto e pré-compilados
+*.o
+*.obj
+*.gcno
+*.gcda
+
+# Diretórios de build/compilação
+bin/
+build/
+Debug/
+Release/
+
+# Arquivos específicos do sistema/IDE
+.DS_Store      # macOS
+.vscode/       # Configurações do VSCode
+
+
