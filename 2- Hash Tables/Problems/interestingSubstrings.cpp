@@ -6,96 +6,134 @@
 #include <string>
 #include <vector>
 
-class ClosedHash {
-private:
-    int m;
-    std::vector<long long> keys;
-    std::vector<int> freqs; // Frequências de cada chave
-    std::vector<int> occupied; // Estado de ocupação de cada posição
+typedef long long ll; // Cansei de digitar long long toda vez 
 
+class Link {
+private:
+    /**/  // Os atributos deveriam ser privados, mas ok
+    
 public:
-    ClosedHash(int size) {
-        m = size;
-        keys.resize(m, -1);
-        freqs.resize(m, 0);
-        occupied.resize(m, 0);
+    ll key;
+    ll value; 
+    Link* next;
+    
+    Link(ll k, ll v) : key(k), value(v), next(nullptr) {}
+    
+};
+
+class LinkedList {
+private:
+    Link* head;
+    int cnt;
+    
+public:
+    LinkedList() {
+        head = new Link(0, 0);
+        cnt = 0;
+        
     }
     
-    ~ClosedHash() {} // Não é necessário liberar memória já que usei vector
-
-    int hash(long long key) {
-        if (key < 0) key = -key;
-        return static_cast<int>(key % m);
-
-    }
-
-    void insert(long long key) {
-        int value = hash(key);
-        for (int i = 0; i < 20; i++) {
-            int pos = (value + i * i + 23 * i) % m;
-            if (occupied[pos] == 0 || occupied[pos] == -1) {
-                keys[pos] = key;
-                freqs[pos] = 1;
-                occupied[pos] = 1;
-                return;
-
-            } else if (occupied[pos] == 1 && keys[pos] == key) {
-                freqs[pos]++;
-                return;
-
-            }
-
+    ~LinkedList() {
+        Link* temp = head;
+        while (temp) {
+            Link* next = temp->next;
+            delete temp;
+            temp = next;
+            
         }
-
     }
-
-    int getFreq(long long key) {
-        int value = hash(key);
-        for (int i = 0; i < 20; i++) {
-            int pos = (value + i * i + 23 * i) % m;
-            if (occupied[pos] == 0) {
-                return 0;
-
-            } else if (occupied[pos] == 1 && keys[pos] == key) {
-                return freqs[pos];
+    
+    ll get(ll key) {
+        Link* curr = head->next;
+        while (curr) {
+            if (curr->key == key) {
+                return curr->value;
                 
             }
-
+            curr = curr->next;
+            
         }
         return 0;
-
+        
     }
+    
+    void increment(ll key) {
+        Link* prev = head;
+        Link* curr = head->next;
+        
+        while (curr) {
+            if (curr->key == key) {
+                curr->value++;
+                return;
+                
+            }
+            prev = curr;
+            curr = curr->next;
+            
+        }
+        
+        prev->next = new Link(key, 1);
+        cnt++;
+        
+    }
+    
+};
 
+class OpenHash {
+private:
+    int m;
+    std::vector<LinkedList> table;
+    
+public:
+    OpenHash(int size) : m(size), table(size) {}
+    
+    int hash(ll key) {
+        return abs(static_cast<int>(key % m));
+        
+    }
+    
+    ll get(ll key) {
+        int pos = hash(key);
+        return table[pos].get(key);
+        
+    }
+    
+    void increment(ll key) {
+        int pos = hash(key);
+        table[pos].increment(key);
+        
+    }
+    
 };
 
 int main() {
-    std::vector<int> letterValues(26);
+    ll totalValue = 0;
+    const int hashSize = 100003; // Funciona em nome do Grande
+    std::vector<OpenHash> letterTables;
+    
     for (int i = 0; i < 26; i++) {
-        std::cin >> letterValues[i];
-
+        letterTables.emplace_back(hashSize);
+        
     }
+
+    std::vector<int> point(26);
+    for (int i = 0; i < 26; i++) {
+        std::cin >> point[i];
+        
+    }
+
     std::string s;
     std::cin >> s;
-
-    int hashSize = 10007; // Diminuir o tamanho do hash
-    std::vector<ClosedHash> letterTables;
-    for (int i = 0; i < 26; i++) {
-        letterTables.push_back(ClosedHash(hashSize));
-
-    }
-
-    long long totalValue = 0;
-    long long prefixSum = 0;
-
-    for (size_t i = 0; i < s.size(); i++) {
-        int letterIndex = s[i] - 'a';
-        totalValue += letterTables[letterIndex].getFreq(prefixSum);
-        prefixSum += letterValues[letterIndex];
-        letterTables[letterIndex].insert(prefixSum);
-
+    ll sum = 0;
+    
+    for (int i = 0; i < s.size(); i++) {
+        int c_index = s[i] - 'a';
+        totalValue += letterTables[c_index].get(sum);
+        sum += point[c_index];
+        letterTables[c_index].increment(sum);
+        
     }
     std::cout << totalValue << std::endl;
-
     return 0;
-
+    
 }
