@@ -1,4 +1,4 @@
-// cd "2- Hash Tables/Problems"
+// cd "edoo\2- Hash Tables/Problems"
 // g++ -std=c++14 interestingSubstrings.cpp -o interestingSubstrings
 // ./interestingSubstrings
 

@@ -1,4 +1,4 @@
-// cd "1- Lists, Queues and Stacks\Problems"
+// cd "edoo\1- Lists, Queues and Stacks\Problems"
 // g++ -std=c++11 parenthesesBalance.cpp -o parenthesesBalance
 // ./parenthesesBalance
 // Código feito em períodos passados

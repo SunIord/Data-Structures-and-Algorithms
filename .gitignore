@@ -18,5 +18,6 @@ Release/
 # Arquivos específicos do sistema/IDE
 .DS_Store      # macOS
 .vscode/       # Configurações do VSCode
+vscode/        # Configurações do VSCode
 
 

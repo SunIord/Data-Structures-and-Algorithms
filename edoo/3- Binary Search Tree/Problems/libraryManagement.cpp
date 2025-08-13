@@ -1,4 +1,4 @@
-// cd "3- Binary Search Tree\Problems"
+// cd "edoo\3- Binary Search Tree\Problems"
 // g++ -std=c++11 libraryManagement.cpp -o libraryManagement
 // ./libraryManagement
 // Código feito em períodos passados

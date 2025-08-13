@@ -1,4 +1,4 @@
-// cd "3- Binary Search Tree\Problems"
+// cd "edoo\3- Binary Search Tree\Problems"
 // g++ -std=c++11 bstR.cpp -o bstR
 // ./bstR
 // Código feito em períodos passados

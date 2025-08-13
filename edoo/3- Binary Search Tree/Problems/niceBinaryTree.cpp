@@ -1,4 +1,4 @@
-// cd "3- Binary Search Tree\Problems"
+// cd "edoo\3- Binary Search Tree\Problems"
 // g++ -std=c++11 niceBinaryTree.cpp -o niceBinaryTree
 // ./niceBinaryTree
 

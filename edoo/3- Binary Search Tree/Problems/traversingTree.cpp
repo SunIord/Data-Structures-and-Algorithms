@@ -1,10 +1,9 @@
-// cd "3- Binary Search Tree\Problems"
-// g++ -std=c++11 fallingsLeaves.cpp -o fallingsLeaves
-// ./fallingsLeaves
+// cd "edoo\3- Binary Search Tree\Problems"
+// g++ -std=c++11 traversingTree.cpp -o traversingTree
+// ./traversingTree
 // Código feito em períodos passados
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -13,7 +12,8 @@ private:
     /**/
     
 public:
-    char key;
+    int key;
+    int value;
     Node* left;
     Node* right;
     
@@ -23,6 +23,7 @@ class Bst {
 private:
     Node* root;
     int nodeCnt;
+    
     void recursiveDeletion(Node* curr) {
         if (curr != nullptr) {
             recursiveDeletion(curr->left);
@@ -63,10 +64,15 @@ public:
         nodeCnt++;
         
     }
-    
+
+    Node* getRoot() {
+        return root;
+        
+    }
+
     void preOrder(Node* root) {
         if (root != nullptr) {
-            cout << root->key;
+            cout << root->key << " ";
             preOrder(root->left);
             preOrder(root->right);
             
@@ -74,39 +80,51 @@ public:
         
     }
     
-    Node* getRoot() {
-        return root;
+    void inOrder(Node* root) {
+        if (root != nullptr) {
+            inOrder(root->left);
+            cout << root->key << " ";
+            inOrder(root->right);
+            
+        }
         
     }
-
+    
+    void posOrder(Node* root) {
+        if (root != nullptr) {
+          posOrder(root->left);
+          posOrder(root->right);
+          cout << root->key << " ";
+          
+        }
+        
+    }
+    
 };
 
 int main() {
-    string line = "";
-    string l = "";
     Bst abb;
+    int n;
+    cin >> n;
     
-    while (cin >> line) {
-        if (line[0] == '*' || line[0] == '$') {
-            for (int i = l.length() - 1; i >= 0; i--) {
-                abb.insert(l[i]);
-                
-            }
-            abb.preOrder(abb.getRoot());
-            cout << endl;
-            
-            if (line[0] == '$') {
-                return 0;
-                
-            }
-            abb = Bst(); 
-            l = "";
-            line = "";
-            
-        }
-        l += line;
+    for (int i = 0; i < n; i++) {
+        int value;
+        cin >> value;
+        abb.insert(value);
         
     }
+    cout << "Pre order : ";
+    abb.preOrder(abb.getRoot());
+    cout << endl;
+    
+    cout << "In order  : ";
+    abb.inOrder(abb.getRoot());
+    cout << endl;
+    
+    cout << "Post order: ";
+    abb.posOrder(abb.getRoot());
+    cout << endl;
+    
     return 0;
     
 }
