@@ -1,4 +1,4 @@
-// cd algoritmos
+// cd cd algoritmos\c++
 // g++ insertionSort.cpp -o insertionSort
 // ./insertionSort
 

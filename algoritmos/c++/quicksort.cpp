@@ -1,4 +1,4 @@
-// cd algoritmos
+// cd cd algoritmos\c++
 // g++ quicksort.cpp -o quicksort
 // ./quicksort
 
