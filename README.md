@@ -17,4 +17,4 @@
 Serves as a structured collection of academic work and study material to support learning and practice in computer science courses.
 
 ---
-*Maintained for educational purposes.*
+**Developed by João Pedro Alves de Moraes**
