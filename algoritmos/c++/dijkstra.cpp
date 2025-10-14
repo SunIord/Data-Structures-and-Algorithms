@@ -1,8 +1,8 @@
-// cd algoritos/c++
+// cd algorimtos/c++
 // g++ dijkstra.cpp -o dijkstra
 // ./dijkstra
 
-#include <../algoritmos/c++/graph.hpp>
+#include "graph.hpp"
 
 void Graph::dijkstra(int start, int dist[]) {
     const int INF = 1e9; // defines infinity

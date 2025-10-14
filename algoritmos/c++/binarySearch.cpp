@@ -1,4 +1,4 @@
-// cd algoritmos\c++
+// cd algoritmos/c++
 // g++ binarySearch.cpp -o binarySearch
 // ./binarySearch
 

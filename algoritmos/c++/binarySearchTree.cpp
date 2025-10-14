@@ -1,4 +1,4 @@
-// cd algoritmos\c++
+// cd algoritmos/c++
 // g++ binarySearchTree.cpp -o bst
 // ./bst
 

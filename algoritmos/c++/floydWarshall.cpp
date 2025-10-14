@@ -1,8 +1,8 @@
-// cd algortios/c++
+// cd algoritmos/c++
 // g++ floydWarshall.cpp -o floydWarshall
 // ./floydWarshall
 
-#include <../algoritmos/c++/graph.hpp>
+#include "graph.hpp"
 
 void Graph::floydWarshall(int dist[]) {
     const int INF = 1e9; // defines infinity
