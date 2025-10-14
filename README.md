@@ -9,8 +9,8 @@
 
 ## 🛠️ Technologies
 
-- C
 - C++
+- C
 
 ## 🎯 Purpose
 

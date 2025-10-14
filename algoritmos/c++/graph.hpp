@@ -1,6 +1,11 @@
+#ifndef GRAPH_HPP
+#define GRAPH_HPP
+
 // cd algoritmos/c++
 // g++ graph.cpp -o graph
 // ./graph
+
+// hpp file for Graph class
 
 #include <iostream>
 #include <queue>
@@ -111,4 +116,11 @@ public:
             postVisit(value);
         }
     }
+
+    // shortest path algorithms
+    void dijkstra(int start, int dist[]);
+    void floydWarshall(int dist[]);
+    void bellmanFord(int start, int dist[]);
 };
+
+#endif
